@@ -17,9 +17,8 @@ public:
     void set_done(bool done) { done_ = done; }
     void set_description(const std::string& desc) { description_ = desc; }
 
-    // Сериализация в строку (для записи в файл)
     std::string serialize() const;
-    // Десериализация из строки
+
     static Task deserialize(const std::string& line);
 
 private:

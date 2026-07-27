@@ -38,9 +38,9 @@ void print_help() {
               << "  -h                    - показать справку\n";
 }
 
-// Разбор командной строки (неинтерактивный режим)
+// No interract mod
 bool execute_command(TaskManager& manager, const std::vector<std::string>& args) {
-    if (args.empty()) return false; // интерактивный
+    if (args.empty()) return false; // interract
 
     const std::string& cmd = args[0];
     if (cmd == "add" && args.size() >= 2) {
@@ -123,7 +123,6 @@ int main(int argc, char* argv[]) {
         args.emplace_back(argv[i]);
     }
 
-    // Создаём менеджер задач
     TaskManager manager(data_file);
     g_manager = &manager;
 
@@ -133,19 +132,19 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Загружаем данные
+    // load data
     if (!manager.load()) {
         std::cerr << "Ошибка загрузки данных. Продолжаем с пустым списком." << std::endl;
     }
 
-    // Если есть команда — выполняем и выходим
+    // Have any command — go and out
     if (!args.empty()) {
         bool ok = execute_command(manager, args);
         manager.unlock_file();
         return ok ? 0 : 1;
     }
 
-    // Интерактивный режим
+    // Interract mod
     std::cout << "Todo Tracker. Введите команду (help для справки, quit для выхода)" << std::endl;
     std::string line;
     while (g_running) {

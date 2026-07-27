@@ -64,7 +64,6 @@ bool TaskManager::load() {
         return true;
     }
 
-    // Парсим построчно
     std::istringstream iss(content);
     std::string line;
     while (std::getline(iss, line)) {
@@ -112,7 +111,6 @@ bool TaskManager::save() const {
     // Принудительная синхронизация (fsync)
     if (fsync(fd_) == -1) {
         std::cerr << "Ошибка fsync: " << strerror(errno) << std::endl;
-        // Не фатально
     }
     return true;
 }

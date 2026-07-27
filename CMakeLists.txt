@@ -6,9 +6,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(todo
-    src/main.cpp
-    src/task.cpp
-    src/task_manager.cpp
+    main.cpp
+    task.cpp
+    task_manager.cpp
 )
 
 target_include_directories(todo PRIVATE src)

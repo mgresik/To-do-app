@@ -34,7 +34,7 @@ private:
     std::string data_file_;
     int fd_;                    // decriptor
     std::vector<Task> tasks_;
-    mutable std::mutex mutex_;  // для потокобезопасности (опционально)
+    mutable std::mutex mutex_;
 
     int next_id_ = 1;
 };
