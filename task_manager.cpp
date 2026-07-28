@@ -82,7 +82,6 @@ bool TaskManager::load() {
 bool TaskManager::save() const {
     if (fd_ == -1) return false;
 
-    // Строим содержимое
     std::string content;
     for (const auto& task : tasks_) {
         content += task.serialize() + '\n';
@@ -108,7 +107,7 @@ bool TaskManager::save() const {
         written += result;
     }
 
-    // Принудительная синхронизация (fsync)
+    // sync
     if (fsync(fd_) == -1) {
         std::cerr << "Ошибка fsync: " << strerror(errno) << std::endl;
     }
